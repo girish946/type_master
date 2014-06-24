@@ -1,10 +1,11 @@
 package type;
 public class SpeedDlg extends java.awt.Dialog implements java.awt.event.ActionListener,java.awt.event.ItemListener
 {
-	public SpeedDlg(java.awt.Frame parent)
+	public SpeedDlg(java.awt.Frame parent,type.GenerateRandomText grt)
 	{
 		super(parent,"Speed");
-			this.setIconImage(java.awt.Toolkit.getDefaultToolkit().getImage("textcur.gif"));
+			this.setIconImage(java.awt.Toolkit.getDefaultToolkit().getImage("../images/textcur.gif"));
+		this.grt=grt;
 		this.setLayout(new java.awt.BorderLayout());
 		cbgpanel=new java.awt.Panel();
 		Labelpanel=new java.awt.Panel();
@@ -167,5 +168,6 @@ if (ie.getSource()==option[4])
 	java.awt.Button ok_Button;
 	int speedint=30;
 	long delaylong=1000;
+	type.GenerateRandomText grt;
 	boolean okclicked=false;
 }

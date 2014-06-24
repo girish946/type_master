@@ -5,7 +5,7 @@ public class Obtain_list
 {
 	public Obtain_list()
 	{
-			wfile=new File("words.txt");
+			wfile=new File("../words.txt");
 			if (wfile.exists())
 			{
 				
