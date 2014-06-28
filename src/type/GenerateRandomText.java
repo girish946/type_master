@@ -1,8 +1,12 @@
 package type;
+/**
+ *
+ * @author girish
+ */
 public class GenerateRandomText extends Thread
 {
 
-		public GenerateRandomText(Type_master typemaster,java.awt.Frame typframe)
+	public GenerateRandomText(Type_master typemaster,java.awt.Frame typframe)
 	{
 			timer=new Thread(this);
 			fram=typframe;
@@ -46,22 +50,23 @@ public class GenerateRandomText extends Thread
 	{		this.clearLabel();
 			try{
 					for (int j=0;j<=6 ;j++ )
-		{
+					{
 						if (typemaster.tvc==true)
 						{
 							millis=01;
 						}
 						else
-			{
+						{
 							millis=delay;
-			}
-			typemaster.Str_label[0].setText(text);
-			typemaster.Str_label[j+1].setText(text);
-			if(j!=0){
-				typemaster.Str_label[j].setText(" ");
 						}
-			timer.sleep(millis);
-		}
+						typemaster.Str_label[0].setText(text);
+						typemaster.Str_label[j+1].setText(text);
+						if(j!=0)
+						{
+							typemaster.Str_label[j].setText(" ");
+						}
+						timer.sleep(millis);
+					}
 		typemaster.Str_label[7].setText("");
 		current++;
 		//numberword--;

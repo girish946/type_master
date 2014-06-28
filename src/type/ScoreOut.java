@@ -17,8 +17,8 @@ public class ScoreOut extends java.lang.Object
 			try
 			{
 				
-			java.io.FileWriter filew=new java.io.FileWriter(targetFile);
-			java.io.PrintWriter print=new java.io.PrintWriter(filew,true);
+				java.io.FileWriter filew=new java.io.FileWriter(targetFile);
+				java.io.PrintWriter print=new java.io.PrintWriter(filew,true);
 			for (int i=0;i<3 ;i++ )
 			{
 				for (int j=0;j<10 ;j++ )

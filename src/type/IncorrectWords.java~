@@ -34,7 +34,7 @@ public class IncorrectWords extends java.awt.Dialog implements java.awt.event.Ac
 		repaint();
 		setVisible(true);
 		setSize(250,250);
-		//setResizable(false);
+		setResizable(false);
 	}
 	public void actionPerformed(java.awt.event.ActionEvent e)
 	{

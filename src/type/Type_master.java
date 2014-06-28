@@ -1,11 +1,17 @@
 package type;
+/**
+ *
+ * @author girish
+ */
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 public class Type_master extends Frame
 {
-		public Type_master()
+		
+	public Type_master()
 	{
+		//arrange the components in the main frame.
 		super("Type_master");
 		this.setIconImage(Toolkit.getDefaultToolkit().getImage("images/textcur.gif"));
 		setLayout(new BorderLayout());
@@ -22,6 +28,9 @@ public class Type_master extends Frame
 		add(center_panel,BorderLayout.CENTER);
 		add(bottom_panel,BorderLayout.SOUTH);
 		top.setLayout(new BorderLayout());
+		/**		
+		 * on the center panel add those 8 Labels from Str_Labels array.
+		 */
 		this.arrangeCenter();
 		center_panel.setLayout(fl);
 		bottom_panel.setLayout(new GridLayout(1,4));
@@ -30,11 +39,13 @@ public class Type_master extends Frame
 		bottom_panel.add(Enter_Field);
 		bottom_panel.add(go_button);
 		bottom_panel.add(score);
-		AssignListener asign=new AssignListener(this);
-		addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosing(java.awt.event.WindowEvent evt) {
+		AssignListener asign=new AssignListener(this); // assing the listeners to all of the buttons
+		//adding window listener to the main Frame.
+	        addWindowListener(new java.awt.event.WindowAdapter() {
+                public void windowClosing(java.awt.event.WindowEvent evt) {
 				System.exit(0);}
        		 });
+		//adding keyListener to Enter_field to check if enter key is pressed.
 		Enter_Field.addKeyListener(new java.awt.event.KeyAdapter(){public void keyPressed(KeyEvent key)
 			{
 				if (key.getKeyChar()=='\n')
@@ -43,15 +54,17 @@ public class Type_master extends Frame
 				}
 			}
 		});
-
+		//set the size of the frame and show the frame.
 		setSize(750,700);
 		validate();
 		invalidate();
 		repaint();	
 		this.setState(Frame.ICONIFIED);
 		setResizable(false);
-		incorrectwords=new IncorrectWords(this);
-		genramtext=new GenerateRandomText(this,this);
+
+		
+		incorrectwords=new IncorrectWords(this);//dialog to show correct and incorrect words entered.
+		genramtext=new GenerateRandomText(this,this);//finally generate list of random words and start the timer.
 
 	}
 	public static void main(String arg[])
@@ -65,6 +78,10 @@ public class Type_master extends Frame
 	{
 		center_panel.setBackground(Color.red);		
 	}
+
+	/*
+	 * add labels in the center_panel 
+	 */
 	public void arrangeCenter()
 	{	
 		for (int i=0;i<8 ;i++ )
@@ -78,7 +95,9 @@ public class Type_master extends Frame
 				}
 	}
 
-
+	/*
+	 *add actionlisteners to all of the buttons and menus.
+	*/
 	class AssignListener
 		{
 			public AssignListener(Type_master parentw)
@@ -99,6 +118,7 @@ public class Type_master extends Frame
 			{
 					tymas=tym;
 			}
+			@Override
 			public void actionPerformed(ActionEvent e)
 			{
 				if (e.getSource()==ViewIncorrect)
@@ -112,7 +132,7 @@ public class Type_master extends Frame
 				}
 				if (e.getSource()==Speed)
 				{
-					System.out.println("Speed clicked");
+					System.out.println("Speed clicked");	
 					tymas.incorrectwords=new type.IncorrectWords(tymas);
 					tymas.incorrectwords.setVisible(true);
 					genramtext.timer.stop();
@@ -158,22 +178,31 @@ public class Type_master extends Frame
 			}
 			Type_master tymas;
 		}
+
+
+	/*
+	 * check if correct word is entered.
+	*/
 	public void chktext()
 	{
 		incorrectwords.allwords.addItem(genramtext.ary[genramtext.current]);
 		incorrectwords.wrongwords.addItem(Enter_Field.getText());
 		tvc=true;
-		if (Enter_Field.getText().equals(genramtext.ary[genramtext.current]))
+		if (Enter_Field.getText().equals(genramtext.ary[genramtext.current])) //if correct word is entered
 		{
-			scoreInt=scoreInt+10;
-			score.setText("    Score : -"+scoreInt);
+			scoreInt=scoreInt+10;					      //then increment the score
+			score.setText("    Score : -"+scoreInt);		      //show the score
 		}
 		else
 		{
 			incorrectwords.wrongwords.list.select(genramtext.current);
 		}
-		Enter_Field.setText("");
+		Enter_Field.setText("");                                             //clear the text field.
 	}
+	
+	/*
+	* reset all the values.
+	*/
 	public void clearall()
 	{
 		genramtext=null;
@@ -181,10 +210,15 @@ public class Type_master extends Frame
 		w_left.setText("Worrds Left 30");
 		score.setText("    Score : -"+scoreInt);
 	}
+
+
+	/*
+	* when typing is done show the score dialog.
+	*/
 	public void endscore()
 	{
-		type.ScoreIn scin=new type.ScoreIn(genramtext.numberword);
-		String[][] scorestring=scin.getDetailedArry();
+		type.ScoreIn scin=new type.ScoreIn(genramtext.numberword);  //get the previous scores.
+		String[][] scorestring=scin.getDetailedArry();		    
 		String[][] scoreadd=new String[11][3];
 		for (int i=0;i<10 ;i++ )
 		{
@@ -198,10 +232,10 @@ public class Type_master extends Frame
 		Integer intg=scoreInt;
 		scoreadd[10][2]=intg.toString();
 		type.ScoreSort scsrt=new type.ScoreSort(scoreadd);
-		scoreadd=scsrt.getSortedArray();
-		type.ScoreOut sout=new type.ScoreOut(scoreadd);
+		scoreadd=scsrt.getSortedArray(); //get the new sorted score list
+		type.ScoreOut sout=new type.ScoreOut(scoreadd);//write the score list to the file.
 		sout.writeData(genramtext.numberword);
-		type.ScoreDlg scdlg=new type.ScoreDlg(this,this);
+		type.ScoreDlg scdlg=new type.ScoreDlg(this,this);  // show the score dialog.
 	}
 
 
@@ -216,7 +250,7 @@ public class Type_master extends Frame
 	private JButton Thread_State=new JButton(ico_pause);
 	private JButton go_button=new JButton(ico_play);
 	public Label w_left =new Label("Words Left 30");
-	public int scoreInt=0;
+	public int scoreInt=0;	//score. incremented by 1 when correct word is typed.
 	private Label score=new Label("    Score : -"+scoreInt);
 	private Panel top =new Panel();
 	public Panel center_panel=new Panel();
@@ -234,6 +268,6 @@ public class Type_master extends Frame
 	private MenuItem abtTypmaster=new MenuItem("About Type_master");
 	GenerateRandomText genramtext;
 	IncorrectWords incorrectwords;
-	private boolean tstate=false;
-	public boolean tvc=false;
+	private boolean tstate=false;   //flag for thread state sleep or running
+	public boolean tvc=false;       //flag to check if text value is changed.
 }
