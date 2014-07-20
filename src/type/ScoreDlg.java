@@ -4,8 +4,8 @@ public class ScoreDlg extends java.awt.Dialog
 	public ScoreDlg(java.awt.Frame parent,Type_master tymas)
 	{
 		super(parent,"Score");
-			this.setIconImage(java.awt.Toolkit.getDefaultToolkit().getImage("../images/textcur.gif"));
-			this.setLayout(new java.awt.BorderLayout());
+		this.setIconImage(type.Global.icon_img);
+		this.setLayout(new java.awt.BorderLayout());
 		centerpanel=new javax.swing.JPanel();
 		centerpanel.setLayout(new java.awt.BorderLayout());
 		insco=new type.ScoreIn(tymas. genramtext.numberword);

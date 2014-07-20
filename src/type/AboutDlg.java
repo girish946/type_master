@@ -4,7 +4,7 @@ public class AboutDlg extends java.awt.Dialog implements java.awt.event.ActionLi
 	public AboutDlg(java.awt.Frame parent)
 	{
 		super(parent,"About Type_master");
-			this.setIconImage(java.awt.Toolkit.getDefaultToolkit().getImage("../images/textcur.gif"));
+		this.setIconImage(type.Global.icon_img);
 		centerpanel=new java.awt.Panel();
 		southpanel=new java.awt.Panel();
 		northpanel=new java.awt.Panel();

@@ -4,7 +4,7 @@ public class SpeedDlg extends java.awt.Dialog implements java.awt.event.ActionLi
 	public SpeedDlg(java.awt.Frame parent,type.GenerateRandomText grt)
 	{
 		super(parent,"Speed");
-			this.setIconImage(java.awt.Toolkit.getDefaultToolkit().getImage("../images/textcur.gif"));
+		this.setIconImage(type.Global.icon_img);
 		this.grt=grt;
 		this.setLayout(new java.awt.BorderLayout());
 		cbgpanel=new java.awt.Panel();

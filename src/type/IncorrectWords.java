@@ -4,7 +4,7 @@ public class IncorrectWords extends java.awt.Dialog implements java.awt.event.Ac
 	public IncorrectWords(java.awt.Frame parent)
 	{
 		super(parent,"Words You Typed");
-			this.setIconImage(java.awt.Toolkit.getDefaultToolkit().getImage("../images/textcur.gif"));
+		this.setIconImage(type.Global.icon_img);
 		this.setLayout(new java.awt.BorderLayout());
 		this.totalwords=new java.awt.List(30,false);
 		this.Incorrectwords=new java.awt.List(30,false);

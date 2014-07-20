@@ -13,7 +13,7 @@ public class Type_master extends Frame
 	{
 		//arrange the components in the main frame.
 		super("Type_master");
-		this.setIconImage(Toolkit.getDefaultToolkit().getImage("images/textcur.gif"));
+		this.setIconImage(type.Global.icon_img);
 		setLayout(new BorderLayout());
 		this.setMenuBar(mainmenu);
 		mainmenu.add(Settings);
@@ -243,9 +243,9 @@ public class Type_master extends Frame
 
 
 	static final long serialVersionUID = 00000000l;
-	private ImageIcon ico_pause=new ImageIcon("../images/stop.gif");
-	private ImageIcon ico_play=new ImageIcon("../images/not.gif");
-	private ImageIcon ico_bg=new ImageIcon("../images/start2.gif");
+	private ImageIcon ico_pause=new ImageIcon(".."+type.Global.seprator+"images"+type.Global.seprator+"stop.gif");
+	private ImageIcon ico_play=new ImageIcon(".."+type.Global.seprator+"images"+type.Global.seprator+"not.gif");
+	private ImageIcon ico_bg=new ImageIcon(".."+type.Global.seprator+"images"+type.Global.seprator+"start2.gif");
 	private TextField Enter_Field=new TextField(10);
 	private JButton Thread_State=new JButton(ico_pause);
 	private JButton go_button=new JButton(ico_play);
