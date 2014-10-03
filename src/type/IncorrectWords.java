@@ -29,11 +29,12 @@ public class IncorrectWords extends java.awt.Dialog implements java.awt.event.Ac
 			dispose();
             }
         });
+		this.setLocation(java.awt.GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().width-325 , java.awt.GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().height-325);
 		validate();
 		invalidate();
 		repaint();
 		setVisible(true);
-		setSize(250,250);
+		setSize(325,325);
 		//setResizable(false);
 	}
 	public void actionPerformed(java.awt.event.ActionEvent e)
@@ -70,6 +71,14 @@ public class IncorrectWords extends java.awt.Dialog implements java.awt.event.Ac
 		java.awt.List list;
 		java.awt.Label label;
 		java.awt.Panel labelpanel,listpanel;
+	}
+	public void setCorrect(int val)
+	{
+		correct.setText("Correct  words :- "+ val);
+	}
+	public void setIncorrect(int val)
+	{
+		incorrect.setText("Incorrect  words :- "+ val);
 	}
 	java.awt.Panel centerpanel,southpanel;
 	listpanel allwords,wrongwords;

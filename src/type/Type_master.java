@@ -192,10 +192,12 @@ public class Type_master extends Frame
 		{
 			scoreInt=scoreInt+10;					      //then increment the score
 			score.setText("    Score : -"+scoreInt);		      //show the score
+			incorrectwords.setCorrect((int) (scoreInt/10));
 		}
 		else
 		{
 			incorrectwords.wrongwords.list.select(genramtext.current);
+			incorrectwords.setIncorrect((genramtext.current) - (int)(scoreInt/10));
 		}
 		Enter_Field.setText("");                                             //clear the text field.
 	}
